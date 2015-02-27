@@ -7,7 +7,7 @@ using Models;
 
 namespace DataBase
 {
-    public class GuestDB : IGuestDb
+    public class GuestDb : IGuestDb
     {
         public List<Guest> GuestList { get; set; }
     }

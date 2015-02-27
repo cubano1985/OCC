@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GuestDB.cs" />
+    <Compile Include="GuestDb.cs" />
     <Compile Include="IGuestDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

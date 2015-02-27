@@ -25,6 +25,14 @@ namespace OCC
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/SemanticUICss").Include(
+                        "~/Content/components/*.css",
+                        "~/Content/semantic.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/SemanticUIJs").Include(
+                        "~/Content/components/*.js",
+                        "~/Content/semantic.js"));
+
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
