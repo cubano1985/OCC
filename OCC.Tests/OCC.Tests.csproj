@@ -106,9 +106,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataBase\DataBase.csproj">
+      <Project>{8a4e6752-e8b0-4443-baaf-260ca48744bb}</Project>
+      <Name>DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{5bff43e9-6142-45e7-8fc5-ced34ac12387}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OCC\OCC.csproj">
       <Project>{9A75AB33-79DC-4EBD-8F32-07BE7BBA77CF}</Project>
       <Name>OCC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{bb27861b-3745-44f8-8181-da65a193c0f2}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
