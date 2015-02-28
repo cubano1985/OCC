@@ -13,5 +13,13 @@ namespace Models
         public GuestGender Gender { get; set; }
         public GuestStatus Status { get; set; }
 
+        public Guest() { }
+
+        public Guest(string name, string Surname, GuestGender gender)
+        {
+            this.Name = name;
+            this.Surname = Surname;
+            this.Gender = gender;
+        }
     }
 }

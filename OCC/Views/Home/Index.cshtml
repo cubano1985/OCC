@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Party Organizer</h2>
+
+<div>@Html.ActionLink("Add guest to the list", "Create", "Guest")</div>
+
+<div>@Html.ActionLink("View Guest list", "Index", "Guest")</div>

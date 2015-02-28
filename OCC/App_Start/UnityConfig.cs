@@ -39,6 +39,7 @@ namespace OCC.App_Start
 
             // TODO: Register your types here
             container.RegisterType<IGuestDb, GuestDb>();
+            container.RegisterType<IGuestService, GuestService>();
         }
     }
 }

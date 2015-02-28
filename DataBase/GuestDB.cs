@@ -9,6 +9,17 @@ namespace DataBase
 {
     public class GuestDb : IGuestDb
     {
-        public List<Guest> GuestList { get; set; }
+        private static List<Guest> _guestList;
+        
+        public List<Guest> GuestList 
+        {
+            get { return _guestList; }
+            set { _guestList = value; }
+        }
+
+        static GuestDb()
+        {
+            _guestList = new List<Guest>();
+        }
     }
 }
