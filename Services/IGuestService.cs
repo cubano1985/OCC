@@ -13,6 +13,7 @@ namespace Services
     {
         List<Guest> GetGuestList();
         bool AddGuest(GuestDTO guest, out string errorMessage);
-       
+
+        void ChangeStatus(int guestId, string newStatus);
     }
 }

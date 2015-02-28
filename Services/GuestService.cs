@@ -34,5 +34,22 @@ namespace Services
 
             return true;
         }
+
+        public void ChangeStatus(int guestId, string newStatus)
+        {
+            var guest = _guestDb.GuestList.First(guestById => guestById.Id == guestId);
+            switch (newStatus)
+            {
+                case "Invited":
+                    guest.Status = GuestStatus.Invited;
+                    break;
+                case "Attending":
+                    guest.Status = GuestStatus.Attending;
+                    break;
+                case "NotAttending":
+                    guest.Status = GuestStatus.NotAttending;
+                    break;
+            }
+        }
     }
 }

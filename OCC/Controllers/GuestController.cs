@@ -119,5 +119,12 @@ namespace OCC.Controllers
                 return View("Delete");
             }
         }
+
+        [HttpPost]
+        public JsonResult ChangeStatus(int guestId, string newStatus)
+        {
+            _guestService.ChangeStatus(guestId, newStatus);
+            return null;
+        }
     }
 }

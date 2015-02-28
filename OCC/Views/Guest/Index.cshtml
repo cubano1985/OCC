@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Models.Guest>
+﻿@using Models;
+@model IEnumerable<Models.Guest>
 
 @{
     ViewBag.Title = "Index";
@@ -18,7 +19,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Surname)
         </th>
-        <th></th>
+        <th>Options</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -30,11 +31,41 @@
             @Html.DisplayFor(modelItem => item.Surname)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            <div class="ui form">
+                <div class="grouped inline fields">
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="@item.Id"
+                                   class="@(item.Status == GuestStatus.Invited ? "checked" : "")">
+                            <label data-guest-status="Invited" data-guest-id="@item.Id" class="guestResponse">Invited</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="@item.Id" 
+                                   class="@(item.Status == GuestStatus.Attending ? "checked" : "")">
+                            <label data-guest-status="Attending" data-guest-id="@item.Id" class="guestResponse">Attending</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="@item.Id" 
+                                   class="@(item.Status == GuestStatus.NotAttending ? "checked" : "")">
+                            <label data-guest-status="NotAttending" data-guest-id="@item.Id" class="guestResponse">Not attending</label>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
         </td>
     </tr>
 }
 
 </table>
+
+    @section scripts
+    {
+        <script src="~/Scripts/Developer/GuestIndex.js"></script>
+    }
