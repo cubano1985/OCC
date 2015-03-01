@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace Models
 {
@@ -12,8 +14,11 @@ namespace Models
         private static int idOrder = 1;
 
         public int Id { get; set; }
+        [Required]        
         public string Name { get; set; }
+        [Required]
         public string Surname { get; set; }
+        [Required]
         public GuestGender Gender { get; set; }
         public GuestStatus Status { get; set; }
 

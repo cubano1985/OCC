@@ -30,8 +30,14 @@ namespace Services
             string errorM = "";
             errorMessage = errorM;
 
-            _guestDb.GuestList.Add(new Guest(guest.Name, guest.Surname, guest.Gender));
+            var alreadyInDb = _guestDb.GuestList.Where(anyGuest => anyGuest.Name.ToLower() == guest.Name.ToLower())
+                                                .Any(anyGuest => anyGuest.Surname.ToLower() == guest.Surname.ToLower());
 
+            if (!alreadyInDb)
+            {
+                _guestDb.GuestList.Add(new Guest(guest.Name, guest.Surname, guest.Gender));
+            }
+            
             return true;
         }
 
