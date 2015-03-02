@@ -8,13 +8,11 @@ namespace OCC.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Main/
-
+        
         public ActionResult Index()
         {
             return View("Index");
-        }
+        }       
 
     }
 }

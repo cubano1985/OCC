@@ -1,0 +1,36 @@
+﻿@model Guest
+@using Models
+
+<div class="card">
+    <div class="content">
+        <div class="header">@Model.Name @Model.Surname</div>
+        <div class="meta"></div>
+        <div class="description">
+            <div class="ui form">
+                <div class="grouped fields">
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="@Model.Id"
+                                   class="@(Model.Status == GuestStatus.Invited ? "checked" : "")">
+                            <label data-guest-status="Invited" data-guest-id="@Model.Id" class="guestResponse">Invited</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="@Model.Id"
+                                   class="@(Model.Status == GuestStatus.Attending ? "checked" : "")">
+                            <label data-guest-status="Attending" data-guest-id="@Model.Id" class="guestResponse">Attending</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="@Model.Id"
+                                   class="@(Model.Status == GuestStatus.NotAttending ? "checked" : "")">
+                            <label data-guest-status="NotAttending" data-guest-id="@Model.Id" class="guestResponse">Not attending</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

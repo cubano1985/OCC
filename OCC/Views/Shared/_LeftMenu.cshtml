@@ -1,0 +1,27 @@
+﻿<div class="ui vertical menu">
+    <div class="ui dropdown item">
+        <i class="dropdown icon"></i>
+        Party organizer
+        <div class="menu">
+            @Html.ActionLink("Add guest to the list", "Create", "Guest", null, new { @class = "item" })
+            @Html.ActionLink("View Guest list", "Index", "Guest", null, new { @class = "item" })
+        </div>
+    </div>
+</div>
+
+<div class="ui vertical menu">
+    <div class="ui dropdown item">
+        <i class="dropdown icon"></i>
+        Save/Load XML
+        <div class="menu">
+            @Html.ActionLink("Save all guests to XML", "SaveAllGuests", "Ajax", null, new { @class = "item" })
+            @Html.ActionLink("Save only attending guests to XML", "SaveAttendingGuests", "Ajax", null, new { @class = "item" })
+            @Html.ActionLink("Open all guests from XML", "LoadAllGuests", "Ajax", null, new { @class = "item" })
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/Developer/LayoutLeftMenu.js"></script>
+}

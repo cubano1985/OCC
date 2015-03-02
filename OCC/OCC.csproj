@@ -338,6 +338,7 @@
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\Developer\GuestCreate.js" />
     <Content Include="Scripts\Developer\GuestIndex.js" />
+    <Content Include="Scripts\Developer\LayoutLeftMenu.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery-2.1.3.min.map" />
@@ -373,6 +374,8 @@
     <Content Include="Views\Guest\Create.cshtml" />
     <Content Include="Views\Guest\Index.cshtml" />
     <Content Include="Views\Guest\GenderBalance.cshtml" />
+    <Content Include="Views\Shared\_LeftMenu.cshtml" />
+    <Content Include="Views\Guest\_guestCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

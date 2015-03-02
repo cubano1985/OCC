@@ -1,6 +1,8 @@
 ﻿/// <reference path="../jquery-2.1.3.intellisense.js" />
 function SubmitCheck(event) {
     event.preventDefault();
+    $("#ErrorMessageText").html("");
+    $("#ErrorMessage").hide();
     var name = $("#Name").val();
     var surname = $("#Surname").val();
     $.post("/Ajax/ValidateNameSurname",
@@ -11,20 +13,44 @@ function SubmitCheck(event) {
 };
 
 $(function () {
-    $("#CreateSubmit").on("submit", SubmitCheck);
+    $("#CreateGuestForm").on("submit", SubmitCheck);
     $("#CloseErrorMessage").on("click", CloseError);
+    //$('.ui.form').form({
+    //    name: {
+    //        identifier: 'Name',
+    //        rules: [
+    //          {
+    //              type: 'empty',
+    //              prompt: 'Please enter guest First-Name'
+    //          }
+    //        ]
+    //    },
+    //    surname: {
+    //        identifier: 'Surname',
+    //        rules: [
+    //          {
+    //              type: 'empty',
+    //              prompt: 'Please enter guest Second-Name'
+    //          }
+    //        ]
+    //    }
+    //});
 });
 
 function ValidationResult(data, name, surname) {
     if (data == true) {
         $("#ErrorMessage").show();
-        $("#ErrorMessageText").html("Guest " + name + " " + surname + " has already been invited.")
+        if ((name != "") && (surname != "")) {
+            $("#ErrorMessageText").html("Guest " + name + " " + surname + " has already been invited.")
+        }
+        
     }
     else {
-        $("#CreateSubmit").unbind("submit").submit();
+        $("#CreateGuestForm").unbind("submit").submit();
     }
 };
 
 function CloseError() {
     $("#ErrorMessage").hide();
 };
+

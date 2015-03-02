@@ -1,78 +1,30 @@
 ﻿@using Models;
-@using System.Web.Mvc.Html
-@model IEnumerable<Models.Guest>
+@using System.Web.Mvc.Html;
+@model List<Guest>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @{
+        ViewBag.Title = "Guest List";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 
-<h2>Index</h2>
-    
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Surname)
-        </th>
-        <th>Options</th>
-    </tr>
+    <h2>Guest List</h2>    
+    <div class="ui cards">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Surname)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-            <div class="ui form">
-                <div class="grouped inline fields">
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="@item.Id"
-                                   class="@(item.Status == GuestStatus.Invited ? "checked" : "")">
-                            <label data-guest-status="Invited" data-guest-id="@item.Id" class="guestResponse">Invited</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="@item.Id" 
-                                   class="@(item.Status == GuestStatus.Attending ? "checked" : "")">
-                            <label data-guest-status="Attending" data-guest-id="@item.Id" class="guestResponse">Attending</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="@item.Id" 
-                                   class="@(item.Status == GuestStatus.NotAttending ? "checked" : "")">
-                            <label data-guest-status="NotAttending" data-guest-id="@item.Id" class="guestResponse">Not attending</label>
-                        </div>
-                    </div>                    
-                </div>
-            </div>
-        </td>
-    </tr>
-}
+        @foreach(Guest guest in Model)
+        {
+          @Html.Partial("_guestCard", guest);
+        }
+        
+    </div>
 
-</table>
 
-@Html.ActionLink("Back to Menu", "Index", "Home")
+    @Html.ActionLink("Back to Menu", "Index", "Home")
 
-@Html.Action("GenderBalance", "Guest")
-    
-    
+    @Html.Action("GenderBalance", "Guest")
 
-@section scripts
+
+
+    @section scripts
 {
-<script src="~/Scripts/Developer/GuestIndex.js"></script>
-}
+        <script src="~/Scripts/Developer/GuestIndex.js"></script>
+    }

@@ -1,16 +1,18 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Party Organizer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Party Organizer</h2>
+<h2 class="ui header">Party Organizer</h2>
 
-<p>@Html.ActionLink("Add guest to the list", "Create", "Guest")</p>
+<h3 class="ui header"> hello and welcome,</h3>
 
-<p>@Html.ActionLink("View Guest list", "Index", "Guest")</p>
+<p>
+    this is your personal and best party organizer tool.
+    here you will be able to input people you have invited for your party,
+    you will be able to track their response and also monitor if there is
+    roughly the same amount of men and women so everyone can dance and not
+    sit alone at your party.
+</p>
 
-<p>@Html.ActionLink("Save all guests to XML", "SaveAllGuests", "Guest")</p>
 
-<p>@Html.ActionLink("Save only attending guests to XML", "SaveAttendingGuests", "Guest")</p>
-
-<p>@Html.ActionLink("Open all guests from XML", "LoadAllGuests", "Guest")</p>

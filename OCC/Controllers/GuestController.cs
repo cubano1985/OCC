@@ -10,13 +10,11 @@ namespace OCC.Controllers
 {
     public class GuestController : Controller
     {
-        private readonly IGuestService _guestService;
-        private readonly ISerializeService _serializeService;        
+        private readonly IGuestService _guestService;             
 
-        public GuestController(IGuestService guestService, ISerializeService serializeService)
+        public GuestController(IGuestService guestService)
         {
-            _guestService = guestService;
-            _serializeService = serializeService;
+            _guestService = guestService;            
         }
 
         //
@@ -125,32 +123,10 @@ namespace OCC.Controllers
         public ActionResult GenderBalance()
         {
             var genderBalanceViewModel = _guestService.GetGenderBalanceViewModel();
-            return View("GenderBalance", genderBalanceViewModel);
+            return PartialView("GenderBalance", genderBalanceViewModel);
         }
 
-        public ActionResult SaveAllGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            var savePath = _serializeService.SerializeFullGuestList(path);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult SaveAttendingGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            var savePath = _serializeService.SerializeAttendingGuestList(path);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult LoadAllGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            _serializeService.DeserializeFullGuestList(path);
-
-            return RedirectToAction("Index", "Home");
-        }
+     
         
     }
 }

@@ -15,49 +15,76 @@
     <p id="ErrorMessageText"></p>
 </div>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "CreateSubmit" }))
-{
+<form class="ui form" id="CreateGuestForm" action="/Guest/Create" method="post">
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>GuestDTO</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
+    <h4 class="ui dividing header">Personal Information</h4>
+    <div class="two fields">
+        <div class="field">
+            <label>Name</label>
+            <div class="two fields">
+                <div class="field">
+                    @Html.TextBoxFor(model => model.Name, new { @placeholder = "Name" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="field">
+                    @Html.TextBoxFor(model => model.Surname, new { @placeholder = "SurnameName" })
+                    @Html.ValidationMessageFor(model => model.Surname)
+                </div>
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Surname)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Surname)
-            @Html.ValidationMessageFor(model => model.Surname)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Gender)
-        </div>
-        <div class="editor-field">
-            @Html.EnumDropDownListFor(model => model.Gender)
+        <div class="field">
+            <label>Gender</label>
+            @Html.EnumDropDownListFor(model => model.Gender, new { @class = "ui selection dropdown" })
             @Html.ValidationMessageFor(model => model.Gender)
         </div>
+    </div>    
+    <input type="submit" value="Create" class="ui button"/>
+</form>
 
-        <p>
-            <input type="submit" value="Create"/>
-        </p>
-    </fieldset>
-}
+    @*@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "CreateGuestForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
-<div>
-    @Html.ActionLink("Back to Menu", "Index", "Home")
-</div>
+        <fieldset>
+            <legend>GuestDTO</legend>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/Developer/GuestCreate.js"></script>
-}
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Name, new { @placeholder = "First-Name" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Surname)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Surname, new { @placeholder="Last-Name"})
+                @Html.ValidationMessageFor(model => model.Surname)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Gender)
+            </div>
+            <div class="editor-field">
+                @Html.EnumDropDownListFor(model => model.Gender, new { @class = "ui selection dropdown" })
+                @Html.ValidationMessageFor(model => model.Gender)
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }*@
+
+    <p>
+        @Html.ActionLink("Back to Menu", "Index", "Home")
+    </p>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script src="~/Scripts/Developer/GuestCreate.js"></script>
+    }

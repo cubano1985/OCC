@@ -9,9 +9,9 @@ namespace Models.DataTransferObjects
 {
     public class GuestDTO
     {
-        [Required]
+        [Required(ErrorMessage="Please enter guest Name")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter guest Surname")]
         public string Surname { get; set; }
         [Required]
         public GuestGender Gender { get; set; }
