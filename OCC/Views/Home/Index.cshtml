@@ -5,6 +5,12 @@
 
 <h2>Party Organizer</h2>
 
-<div>@Html.ActionLink("Add guest to the list", "Create", "Guest")</div>
+<p>@Html.ActionLink("Add guest to the list", "Create", "Guest")</p>
 
-<div>@Html.ActionLink("View Guest list", "Index", "Guest")</div>
+<p>@Html.ActionLink("View Guest list", "Index", "Guest")</p>
+
+<p>@Html.ActionLink("Save all guests to XML", "SaveAllGuests", "Guest")</p>
+
+<p>@Html.ActionLink("Save only attending guests to XML", "SaveAttendingGuests", "Guest")</p>
+
+<p>@Html.ActionLink("Open all guests from XML", "LoadAllGuests", "Guest")</p>

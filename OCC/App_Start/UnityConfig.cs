@@ -41,6 +41,7 @@ namespace OCC.App_Start
             container.RegisterType<IGuestDb, GuestDb>();
             container.RegisterType<IGuestService, GuestService>();
             container.RegisterType<IValidateService, ValidateService>();
+            container.RegisterType<ISerializeService, SerializeService>();
         }
     }
 }

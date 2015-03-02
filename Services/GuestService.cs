@@ -20,9 +20,9 @@ namespace Services
         }
 
         /// <summary>
-        /// 
+        /// Method that connects to Database to get Guest List.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Full Guest List</returns>
         public List<Guest> GetGuestList()
         {
             var response = _guestDb.GuestList;
@@ -30,9 +30,9 @@ namespace Services
         }
 
         /// <summary>
-        /// 
+        /// Method that adds Guest to the Database
         /// </summary>
-        /// <param name="guest"></param>
+        /// <param name="guest">Input value from user</param>
         /// <param name="errorMessage"></param>
         /// <returns></returns>
         public bool AddGuest(GuestDTO guest, out string errorMessage)
@@ -53,10 +53,10 @@ namespace Services
         }
 
         /// <summary>
-        /// 
+        /// Method that changes Status of Guest
         /// </summary>
-        /// <param name="guestId"></param>
-        /// <param name="newStatus"></param>
+        /// <param name="guestId">To which Guest status should be changed</param>
+        /// <param name="newStatus">New status name</param>
         public void ChangeStatus(int guestId, string newStatus)
         {
             var guest = _guestDb.GuestList.First(guestById => guestById.Id == guestId);

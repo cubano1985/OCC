@@ -66,10 +66,13 @@
 
 </table>
 
-    @Html.Action("GenderBalance", "Guest")
+@Html.ActionLink("Back to Menu", "Index", "Home")
+
+@Html.Action("GenderBalance", "Guest")
+    
     
 
-    @section scripts
-    {
-        <script src="~/Scripts/Developer/GuestIndex.js"></script>
-    }
+@section scripts
+{
+<script src="~/Scripts/Developer/GuestIndex.js"></script>
+}

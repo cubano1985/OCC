@@ -8,11 +8,12 @@ using System.Web.Mvc;
 
 namespace Models
 {
+    [Serializable]
     public class Guest
     {
         //Static enumerator for Guests on the List
         private static int idOrder = 1;
-
+        [Key]
         public int Id { get; set; }
         [Required]        
         public string Name { get; set; }
@@ -24,13 +25,19 @@ namespace Models
 
         public Guest() { }
 
-        public Guest(string name, string Surname, GuestGender gender)
+        public Guest(string name, string surname, GuestGender gender)
         {
             this.Name = name;
-            this.Surname = Surname;
+            this.Surname = surname;
             this.Gender = gender;
 
             this.Status = GuestStatus.Invited;
+            this.Id = idOrder++;
+        }
+
+        public Guest(string name, string surname, GuestGender gender, GuestStatus status):this(name, surname, gender)
+        {
+            this.Status = status;
             this.Id = idOrder++;
         }
     }
