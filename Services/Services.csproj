@@ -41,7 +41,9 @@
   <ItemGroup>
     <Compile Include="GuestService.cs" />
     <Compile Include="IGuestService.cs" />
+    <Compile Include="IValidateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidateService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBase\DataBase.csproj">
