@@ -118,13 +118,12 @@ namespace OCC.Controllers
             {
                 return View("Delete");
             }
-        }
+        }        
 
-        [HttpPost]
-        public JsonResult ChangeStatus(int guestId, string newStatus)
+        public ActionResult GenderBalance()
         {
-            _guestService.ChangeStatus(guestId, newStatus);
-            return null;
+            var genderBalanceViewModel = _guestService.GetGenderBalanceViewModel();
+            return View("GenderBalance", genderBalanceViewModel);
         }
     }
 }

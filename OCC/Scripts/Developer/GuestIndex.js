@@ -11,5 +11,5 @@ function GuestStatusChange(element) {
     var radioCaller = $(element.target);
     var id = radioCaller.data("guest-id");
     var status = radioCaller.data("guest-status");
-    $.post("/Guest/ChangeStatus", { guestId: id, newStatus: status });
+    $.post("/Ajax/ChangeStatus", { guestId: id, newStatus: status });
 };

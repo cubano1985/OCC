@@ -372,6 +372,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Guest\Create.cshtml" />
     <Content Include="Views\Guest\Index.cshtml" />
+    <Content Include="Views\Guest\GenderBalance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
