@@ -15,9 +15,9 @@
         <i class="dropdown icon"></i>
         Save/Load XML
         <div class="menu">
-            @Html.ActionLink("Save all guests to XML", "SaveAllGuests", "Home", null, new { @class = "item" })
-            @Html.ActionLink("Save only attending guests to XML", "SaveAttendingGuests", "Home", null, new { @class = "item" })
-            @Html.ActionLink("Open all guests from XML", "LoadAllGuests", "Home", null, new { @class = "item" })
+            <div id="saveAllGuests" class="item">Save all guests to XML</div>
+            <div id="saveAttendingGuests" class="item">Save attending guests to XML</div>            
+            @Html.ActionLink("Open all guests from XML", "LoadAllGuests", "Home", null, new { @class = "item" })            
         </div>
     </div>
 </div>

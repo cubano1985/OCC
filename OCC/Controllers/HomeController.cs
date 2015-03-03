@@ -27,21 +27,25 @@ namespace OCC.Controllers
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
 
-        public ActionResult SaveAllGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            var savePath = _serializeService.SerializeFullGuestList(path);
+        //public ActionResult SaveAllGuests()
+        //{
+        //    var path = Server.MapPath("~/SerializedData");
+        //    var savePath = _serializeService.SerializeFullGuestList(path);
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
-        public ActionResult SaveAttendingGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            var savePath = _serializeService.SerializeAttendingGuestList(path);
+     
 
-            return RedirectToAction("Index");
-        }
+        //public ActionResult SaveAttendingGuests()
+        //{
+        //    var path = Server.MapPath("~/SerializedData");
+        //    var savePath = _serializeService.SerializeAttendingGuestList(path);
+
+        //    return RedirectToAction("Index");
+        //}
+
+     
 
         public ActionResult LoadAllGuests()
         {

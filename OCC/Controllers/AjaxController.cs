@@ -34,6 +34,21 @@ namespace OCC.Controllers
             return null;
         }
 
+        public JsonResult SaveAllGuests()
+        {
+            var path = Server.MapPath("~/SerializedData");
+            var savePath = _serializeService.SerializeFullGuestList(path);
+
+            return Json(savePath);
+        }
+
+        public JsonResult SaveAttendingGuests()
+        {
+            var path = Server.MapPath("~/SerializedData");
+            var savePath = _serializeService.SerializeAttendingGuestList(path);
+
+            return Json(savePath);
+        }
       
     }
 }
