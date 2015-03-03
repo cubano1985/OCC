@@ -1,6 +1,6 @@
 ﻿/// <reference path="../jquery-2.1.3.intellisense.js" />
 $(function () {
-    $("#CreateGuestForm").on("submit", SubmitCheck);
+    $("#EditGuestForm").on("submit", SubmitCheck);
     $("#CloseErrorMessage").on("click", CloseError);
 });
 
@@ -22,14 +22,13 @@ function ValidationResult(data, name, surname) {
         $("#ErrorMessage").show();
         if ((name != "") && (surname != "")) {
             $("#ErrorMessageText").html("Guest " + name + " " + surname + " has already been invited.")
-        }        
+        }
     }
     else {
-        $("#CreateGuestForm").unbind("submit").submit();
+        $("#EditGuestForm").unbind("submit").submit();
     }
 };
 
 function CloseError() {
     $("#ErrorMessage").hide();
 };
-

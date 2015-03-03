@@ -143,12 +143,50 @@ namespace Services
         /// <param name="id">Guest id</param>
         public void DeleteGuest(int id)
         {
-            var guest = _guestDb.GuestList.FirstOrDefault(guestById => guestById.Id == id);
+            var guest = GetGuestById(id);
 
             if (guest != null)
             {
                 _guestDb.GuestList.Remove(guest);
             }
+        }     
+
+        /// <summary>
+        /// Method that gets and returns single guest by his id
+        /// </summary>
+        /// <param name="id">Guest id</param>
+        /// <returns>Guest</returns>
+        public Guest GetGuest(int id)
+        {
+            var guest = GetGuestById(id);
+
+            return guest;
         }
+
+        /// <summary>
+        /// Method that Edits Guest
+        /// </summary>
+        /// <param name="editedGuest">Guest after Edit</param>
+        public void EditGuest(Guest editedGuest)
+        {
+            var currectGuest = GetGuestById(editedGuest.Id);
+            currectGuest.Name = editedGuest.Name;
+            currectGuest.Surname = editedGuest.Surname;
+            currectGuest.Gender = editedGuest.Gender;
+        }
+
+        /// <summary>
+        /// Helper method used to get the Guest from Database by his id
+        /// </summary>
+        /// <param name="id">Guest id</param>
+        /// <returns>Guest</returns>
+        private Guest GetGuestById(int id)
+        {
+            var guest = _guestDb.GuestList.FirstOrDefault(guestById => guestById.Id == id);
+            return guest;
+        }
+
+
+       
     }
 }

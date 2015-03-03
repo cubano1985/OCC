@@ -1,10 +1,8 @@
 ﻿/// <reference path="../jquery-2.1.3.intellisense.js" />
-$('.ui.checkbox')
-  .checkbox();
-
 $(function () {
     $(".checked").prop("checked", "checked");
     $(".guestResponse").on("click", GuestStatusChange);
+    $('.ui.checkbox').checkbox();
 });
 
 function GuestStatusChange(element) {

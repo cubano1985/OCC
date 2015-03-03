@@ -5,38 +5,34 @@ using System.Web;
 using System.Web.Mvc;
 using Services;
 using Models.DataTransferObjects;
+using Models;
 
 namespace OCC.Controllers
 {
     public class GuestController : Controller
     {
-        private readonly IGuestService _guestService;             
+        private readonly IGuestService _guestService;
 
         public GuestController(IGuestService guestService)
         {
-            _guestService = guestService;            
+            _guestService = guestService;
         }
 
-            public ActionResult Index()
+        public ActionResult Index()
         {
             var guestList = _guestService.GetGuestList();
 
             return View("Index", guestList);
         }
 
-          public ActionResult Details(int id)
-        {
-            return View("Details");
-        }
-
-         public ActionResult Create()
+        public ActionResult Create()
         {
             return View("Create");
         }
 
-            [HttpPost]
+        [HttpPost]
         public ActionResult Create(GuestDTO guest)
-        {        
+        {
             try
             {
                 if (ModelState.IsValid)
@@ -54,17 +50,19 @@ namespace OCC.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View("Edit");
+            var guest = _guestService.GetGuest(id);
+
+            return View("Edit", guest);
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Guest editedGuest)
         {
             try
             {
-                // TODO: Add update logic here
+                _guestService.EditGuest(editedGuest);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -85,7 +83,7 @@ namespace OCC.Controllers
             return PartialView("_genderBalance", genderBalanceViewModel);
         }
 
-     
-        
+
+
     }
 }

@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ui negative message" id="ErrorMessage">
+    <i class="close icon" id="CloseErrorMessage"></i>
+    <div class="header">
+        There was a problem with Loading guests from XML
+    </div>
+    <p>
+        Possibly the file does not exist at destined location. Please use save to XML function first.
+    </p>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Developer/HomeLoadFailed.js"></script>
+}
+
+

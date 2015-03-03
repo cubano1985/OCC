@@ -47,7 +47,12 @@ namespace OCC.Controllers
         {
             var path = Server.MapPath("~/SerializedData");
             var isLoadSuccessful = _serializeService.DeserializeFullGuestList(path);
-            //add failed load message
+            
+            if (isLoadSuccessful == false)
+            {
+                return View("FailedLoad");
+            }
+
             return RedirectToAction("Index");
         }
     }

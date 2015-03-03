@@ -21,5 +21,9 @@ namespace Services
         GenderBalanceViewModel GetGenderBalanceViewModel();
 
         void DeleteGuest(int id);
+
+        Guest GetGuest(int id);
+
+        void EditGuest(Guest editedGuest);
     }
 }
