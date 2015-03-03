@@ -12,12 +12,14 @@ namespace Services
 {
     public class SerializeService : ISerializeService
     {
+        #region constructor
         private readonly IGuestDb _guestDb;
 
         public SerializeService(IGuestDb guestDb)
         {
             _guestDb = guestDb;
         }
+        #endregion
 
         /// <summary>
         /// Method that serializes all guests to XML

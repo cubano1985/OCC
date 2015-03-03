@@ -4,6 +4,7 @@ $(function () {
     $("#CloseErrorMessage").on("click", CloseError);
 });
 
+//Validation function that prevents submit, uses Ajax to check if guest was already invited.
 function SubmitCheck(event) {
     event.preventDefault();
     $("#ErrorMessageText").html("");
@@ -17,6 +18,7 @@ function SubmitCheck(event) {
         })
 };
 
+//Takes action according to validation result, shows message when there are problems or submits the form otherwise.
 function ValidationResult(data, name, surname) {
     if (data == true) {
         $("#ErrorMessage").show();
@@ -29,6 +31,7 @@ function ValidationResult(data, name, surname) {
     }
 };
 
+//Function to hide error message.
 function CloseError() {
     $("#ErrorMessage").hide();
 };

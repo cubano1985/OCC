@@ -11,12 +11,14 @@ namespace OCC.Controllers
 {
     public class GuestController : Controller
     {
+        #region constructor
         private readonly IGuestService _guestService;
 
         public GuestController(IGuestService guestService)
         {
             _guestService = guestService;
         }
+        #endregion
 
         public ActionResult Index()
         {
@@ -82,8 +84,6 @@ namespace OCC.Controllers
             var genderBalanceViewModel = _guestService.GetGenderBalanceViewModel();
             return PartialView("_genderBalance", genderBalanceViewModel);
         }
-
-
 
     }
 }

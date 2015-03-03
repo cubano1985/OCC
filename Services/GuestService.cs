@@ -12,12 +12,14 @@ namespace Services
 {
     public class GuestService : IGuestService
     {
+        #region constructor
         private readonly IGuestDb _guestDb;
 
         public GuestService(IGuestDb guestDb)
         {
             _guestDb = guestDb;
         }
+        #endregion
 
         /// <summary>
         /// Method that connects to Database to get Guest List.
@@ -175,6 +177,7 @@ namespace Services
             currectGuest.Gender = editedGuest.Gender;
         }
 
+        #region private methods
         /// <summary>
         /// Helper method used to get the Guest from Database by his id
         /// </summary>
@@ -185,8 +188,7 @@ namespace Services
             var guest = _guestDb.GuestList.FirstOrDefault(guestById => guestById.Id == id);
             return guest;
         }
+        #endregion
 
-
-       
     }
 }

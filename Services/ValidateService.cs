@@ -9,12 +9,14 @@ namespace Services
 {
     public class ValidateService : IValidateService
     {
+        #region constructor
         private readonly IGuestDb _guestDb;
 
         public ValidateService(IGuestDb guestDb)
         {
             _guestDb = guestDb;
         }
+        #endregion
 
         /// <summary>
         /// Method used for client side validation through Ajax call to check if given guest is already in Database.

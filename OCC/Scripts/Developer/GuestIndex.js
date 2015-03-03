@@ -5,6 +5,7 @@ $(function () {
     $('.ui.checkbox').checkbox();
 });
 
+//Function that uses Ajax to invoke controller action to chance guest status.
 function GuestStatusChange(element) {
     var radioCaller = $(element.target);
     var id = radioCaller.data("guest-id");

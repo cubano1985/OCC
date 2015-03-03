@@ -9,6 +9,7 @@ namespace OCC.Controllers
 {
     public class AjaxController : Controller
     {
+        #region constructor
         private readonly IValidateService _validateService;
         private readonly IGuestService _guestService;
         private readonly ISerializeService _serializeService;
@@ -20,7 +21,9 @@ namespace OCC.Controllers
             _guestService = guestService;
             _serializeService = serializeService;
         }
+        #endregion
 
+        [HttpPost]
         public JsonResult ValidateNameSurname(string name, string surname)
         {
             var serviceResult = _validateService.IsGuestInDb(name, surname);

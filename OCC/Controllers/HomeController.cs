@@ -9,14 +9,15 @@ namespace OCC.Controllers
 {
     public class HomeController : Controller
     {
-  
+        #region constructor
         private readonly ISerializeService _serializeService;
 
         public HomeController(ISerializeService serializeService)
         {            
             _serializeService = serializeService;
         }
-        
+        #endregion
+
         public ActionResult Index()
         {
             return View("Index");
@@ -26,27 +27,7 @@ namespace OCC.Controllers
         {            
             return Redirect(HttpContext.Request.UrlReferrer.AbsoluteUri);
         }
-
-        //public ActionResult SaveAllGuests()
-        //{
-        //    var path = Server.MapPath("~/SerializedData");
-        //    var savePath = _serializeService.SerializeFullGuestList(path);
-
-        //    return RedirectToAction("Index");
-        //}
-
-     
-
-        //public ActionResult SaveAttendingGuests()
-        //{
-        //    var path = Server.MapPath("~/SerializedData");
-        //    var savePath = _serializeService.SerializeAttendingGuestList(path);
-
-        //    return RedirectToAction("Index");
-        //}
-
-     
-
+      
         public ActionResult LoadAllGuests()
         {
             var path = Server.MapPath("~/SerializedData");
