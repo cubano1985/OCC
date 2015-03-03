@@ -1,6 +1,33 @@
 ﻿@model Models.ViewModels.GenderBalanceViewModel
 
-<div>
+<div class="ui card">
+    <div class="content">
+        <div class="header">Gender Balance</div>
+        <div class="meta"><i class="refresh icon"></i>@Html.ActionLink("Refresh", "Refresh", "Home")</div>
+        <div class="description">
+            <a class="ui yellow ribbon label">Invited</a>
+            <p>Men: @Model.MenInvited</p>
+            <p>Women: @Model.WomenInvited</p>
+            <a class="ui green ribbon label">Attending</a>
+            <p>Men: @Model.MenAttending</p>
+            <p>Women: @Model.WomenAttending</p>
+        </div>
+    </div>
+    <div class="extra content">
+        @{if(@Model.InvitedWarning != ""){ 
+        <p>
+            <i class="warning icon"></i>
+            @Model.InvitedWarning
+        </p>}}
+        @{if(@Model.AttendingWarning != "") {
+        <p>
+            <i class="warning circle icon"></i>
+            @Model.AttendingWarning
+        </p>}}
+    </div>
+</div>
+
+@*<div>
     <h4>GenderBalanceViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -53,5 +80,5 @@
         </dd>
 
     </dl>
-</div>
+</div>*@
 

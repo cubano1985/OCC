@@ -13,10 +13,13 @@ namespace Services
     public interface IGuestService
     {
         List<Guest> GetGuestList();
-        bool AddGuest(GuestDTO guest, out string errorMessage);
+
+        void AddGuest(GuestDTO guest);
 
         void ChangeStatus(int guestId, string newStatus);
 
         GenderBalanceViewModel GetGenderBalanceViewModel();
+
+        void DeleteGuest(int id);
     }
 }

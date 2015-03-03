@@ -34,28 +34,6 @@ namespace OCC.Controllers
             return null;
         }
 
-        public ActionResult SaveAllGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            var savePath = _serializeService.SerializeFullGuestList(path);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult SaveAttendingGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            var savePath = _serializeService.SerializeAttendingGuestList(path);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult LoadAllGuests()
-        {
-            var path = Server.MapPath("~/SerializedData");
-            _serializeService.DeserializeFullGuestList(path);
-
-            return RedirectToAction("Index", "Home");
-        }
+      
     }
 }

@@ -12,6 +12,6 @@ namespace Services
 
         string SerializeAttendingGuestList(string path);
 
-        void DeserializeFullGuestList(string path);
+        bool DeserializeFullGuestList(string path);
     }
 }

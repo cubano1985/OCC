@@ -17,50 +17,34 @@ namespace OCC.Controllers
             _guestService = guestService;            
         }
 
-        //
-        // GET: /Guest/
-
-        public ActionResult Index()
+            public ActionResult Index()
         {
             var guestList = _guestService.GetGuestList();
 
             return View("Index", guestList);
         }
 
-        //
-        // GET: /Guest/Details/5
-
-        public ActionResult Details(int id)
+          public ActionResult Details(int id)
         {
             return View("Details");
         }
 
-        //
-        // GET: /Guest/Create
-
-        public ActionResult Create()
+         public ActionResult Create()
         {
             return View("Create");
         }
 
-        //
-        // POST: /Guest/Create
-
-        [HttpPost]
+            [HttpPost]
         public ActionResult Create(GuestDTO guest)
-        {
-            bool result;
-            string errorMessage;
-
+        {        
             try
             {
-                // TODO: Add insert logic here
                 if (ModelState.IsValid)
                 {
-                    result = _guestService.AddGuest(guest, out errorMessage);
+                    _guestService.AddGuest(guest);
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -68,16 +52,10 @@ namespace OCC.Controllers
             }
         }
 
-        //
-        // GET: /Guest/Edit/5
-
         public ActionResult Edit(int id)
         {
             return View("Edit");
         }
-
-        //
-        // POST: /Guest/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -94,36 +72,17 @@ namespace OCC.Controllers
             }
         }
 
-        //
-        // GET: /Guest/Delete/5
-
         public ActionResult Delete(int id)
         {
-            return View("Delete");
+            _guestService.DeleteGuest(id);
+
+            return RedirectToAction("Index");
         }
-
-        //
-        // POST: /Guest/Delete/5
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View("Delete");
-            }
-        }        
 
         public ActionResult GenderBalance()
         {
             var genderBalanceViewModel = _guestService.GetGenderBalanceViewModel();
-            return PartialView("GenderBalance", genderBalanceViewModel);
+            return PartialView("_genderBalance", genderBalanceViewModel);
         }
 
      

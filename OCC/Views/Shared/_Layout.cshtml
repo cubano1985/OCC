@@ -13,16 +13,14 @@
     @*@Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body>
-    <div class="ui grid">
+    <div class="ui page grid">
         <div class="four wide column">
             @Html.Partial("_LeftMenu")            
         </div>
         <div class="twelve wide column">
             @RenderBody()
         </div>
-    </div>
-    
-
+    </div>       
     
     @RenderSection("scripts", required: false)
     @RenderSection("styles", required: false)

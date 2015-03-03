@@ -32,24 +32,17 @@ namespace Services
         /// <summary>
         /// Method that adds Guest to the Database
         /// </summary>
-        /// <param name="guest">Input value from user</param>
-        /// <param name="errorMessage"></param>
-        /// <returns></returns>
-        public bool AddGuest(GuestDTO guest, out string errorMessage)
-        {
-            //Implement check if guest is already on the list here and adjust rest of logic accordingly
-            string errorM = "";
-            errorMessage = errorM;
-
-            var alreadyInDb = _guestDb.GuestList.Where(anyGuest => anyGuest.Name.ToLower() == guest.Name.ToLower())
+        /// <param name="guest">Input value from user</param>                
+        public void AddGuest(GuestDTO guest)
+        {            
+            var checkIfGuestIsAlreadyInDb = _guestDb.GuestList.Where(anyGuest => anyGuest.Name.ToLower() == guest.Name.ToLower())
                                                 .Any(anyGuest => anyGuest.Surname.ToLower() == guest.Surname.ToLower());
 
-            if (!alreadyInDb)
+            if (!checkIfGuestIsAlreadyInDb)
             {
                 _guestDb.GuestList.Add(new Guest(guest.Name, guest.Surname, guest.Gender));
             }
-            
-            return true;
+                        
         }
 
         /// <summary>
@@ -75,9 +68,9 @@ namespace Services
         }
 
         /// <summary>
-        /// 
+        /// Method that creates GenderBalanceViewModel.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>GenderBalanceViewModel</returns>
         public GenderBalanceViewModel GetGenderBalanceViewModel()
         {
             var viewModel = new GenderBalanceViewModel();
@@ -142,6 +135,20 @@ namespace Services
             }
 
             return viewModel;
+        }
+
+        /// <summary>
+        /// Method that deletes guest from the list
+        /// </summary>
+        /// <param name="id">Guest id</param>
+        public void DeleteGuest(int id)
+        {
+            var guest = _guestDb.GuestList.FirstOrDefault(guestById => guestById.Id == id);
+
+            if (guest != null)
+            {
+                _guestDb.GuestList.Remove(guest);
+            }
         }
     }
 }

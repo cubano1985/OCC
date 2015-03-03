@@ -19,6 +19,11 @@ namespace Services
             _guestDb = guestDb;
         }
 
+        /// <summary>
+        /// Method that serializes all guests to XML
+        /// </summary>
+        /// <param name="path">Actual path to app directory</param>
+        /// <returns>Path to XML file</returns>
         public string SerializeFullGuestList(string path)
         {
             var fullPath = path + "\\AllGuestList.xml";
@@ -30,6 +35,11 @@ namespace Services
             return fullPath;
         }
 
+        /// <summary>
+        /// Method that serializes only attending guests to XML
+        /// </summary>
+        /// <param name="path">Actual path to app directory</param>
+        /// <returns>Path to XML file</returns>
         public string SerializeAttendingGuestList(string path)
         {
             var fullPath = path + "\\AttendingGuestList.xml";
@@ -42,17 +52,31 @@ namespace Services
             return fullPath;
         }
 
-        public void DeserializeFullGuestList(string path)
+        /// <summary>
+        /// Method that reads all guest list
+        /// </summary>
+        /// <param name="path">Actual path to app directory</param>
+        /// <returns>True if data was read without problems, false otherwise</returns>
+        public bool DeserializeFullGuestList(string path)
         {
-            var deserializer = new XmlSerializer(typeof(List<Guest>));
-            var reader = new StreamReader(path + "\\AllGuestList.xml");
-
-            var readList = (List<Guest>)deserializer.Deserialize(reader);
-
-            foreach (Guest guest in readList)
+            try
             {
-                _guestDb.GuestList.Add(new Guest(guest.Name, guest.Surname, guest.Gender, guest.Status));
+                var deserializer = new XmlSerializer(typeof(List<Guest>));
+                var reader = new StreamReader(path + "\\AllGuestList.xml");
+
+                var readList = (List<Guest>)deserializer.Deserialize(reader);
+                reader.Close();
+
+                foreach (Guest guest in readList)
+                {
+                    _guestDb.GuestList.Add(new Guest(guest.Name, guest.Surname, guest.Gender, guest.Status));
+                }
             }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
